@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Emotion Detector</title>
+  </head>
+  <body>
+      <h1>Emotion Detector</h1>
+      <p>Enter text to analyze:</p>
+      <input type="text" id="textToAnalyze">
+      <button onclick="analyzeEmotion()">Analyze</button>
+      <div id="system_response"></div>
+
+      <script>
+          function analyzeEmotion() {
+            var text = document.getElementById('textToAnalyze').value;
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("system_response").innerHTML = xhttp.responseText;
+                }
+            };
+            xhttp.open("GET", "emotionDetector?textToAnalyze=" + text, true);
+            xhttp.send();
+}
+    </script>
+      </body>
+      </html>
+      
